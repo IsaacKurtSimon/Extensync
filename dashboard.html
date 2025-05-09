@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extension Services Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f0f2f5;
+            color: #333;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: #1a1a1a;
+            color: white;
+            padding: 2rem;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .nav-item {
+            padding: 0.8rem 1rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .nav-item:hover {
+            background: #333;
+        }
+
+        .main-content {
+            padding: 2rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .stat-card h3 {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2d3748;
+        }
+
+        .services-table {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+
+        .status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+        }
+
+        .status.active {
+            background: #c6f6d5;
+            color: #2f855a;
+        }
+
+        .status.inactive {
+            background: #fed7d7;
+            color: #c53030;
+        }
+
+        .status.warning {
+            background: #feebc8;
+            color: #c05621;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <h2>Extension Services</h2>
+            <div class="nav-item">Dashboard</div>
+            <div class="nav-item">Services</div>
+            <div class="nav-item">Analytics</div>
+            <div class="nav-item">Settings</div>
+        </div>
+        
+        <div class="main-content">
+            <div class="header">
+                <h1>Dashboard</h1>
+                <div class="date">Last updated: <span id="current-date"></span></div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Active Services</h3>
+                    <div class="value">12</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Requests</h3>
+                    <div class="value">1,234</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Success Rate</h3>
+                    <div class="value">99.8%</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Average Response Time</h3>
+                    <div class="value">45ms</div>
+                </div>
+            </div>
+
+            <div class="services-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Service Name</th>
+                            <th>Status</th>
+                            <th>Uptime</th>
+                            <th>Last Check</th>
+                            <th>Response Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Authentication Service</td>
+                            <td><span class="status active">Active</span></td>
+                            <td>99.99%</td>
+                            <td>2 minutes ago</td>
+                            <td>32ms</td>
+                        </tr>
+                        <tr>
+                            <td>Data Sync Service</td>
+                            <td><span class="status active">Active</span></td>
+                            <td>99.95%</td>
+                            <td>1 minute ago</td>
+                            <td>45ms</td>
+                        </tr>
+                        <tr>
+                            <td>Notification Service</td>
+                            <td><span class="status warning">Warning</span></td>
+                            <td>99.80%</td>
+                            <td>5 minutes ago</td>
+                            <td>78ms</td>
+                        </tr>
+                        <tr>
+                            <td>Analytics Service</td>
+                            <td><span class="status inactive">Inactive</span></td>
+                            <td>98.50%</td>
+                            <td>10 minutes ago</td>
+                            <td>120ms</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Update current date
+        document.getElementById('current-date').textContent = new Date().toLocaleString();
+    </script>
+</body>
+</html> 
